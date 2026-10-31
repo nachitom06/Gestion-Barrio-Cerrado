@@ -8,6 +8,7 @@ public class Autorizaciones {
     private Lote lote;
     private LocalDate fecha;
     private String franjaHoraria;
+    private boolean utilizada;
 
     public Autorizaciones() {
     }
@@ -19,7 +20,14 @@ public class Autorizaciones {
         this.fecha = fecha;
         this.franjaHoraria = franjaHoraria;
     }
+    public boolean validarAutorizacion(){
+        if(this.utilizada){
+            return false;
+        }
+        this.utilizada=true;
+        return true;
 
+    }
     public String getDocumento() {
         return documento;
     }
@@ -38,5 +46,12 @@ public class Autorizaciones {
 
     public LocalDate getFecha() {
         return fecha;
+    }
+
+    public boolean isUtilizada() {
+        return utilizada;
+    }
+    public void marcarUtilizada() {
+        this.utilizada=true;
     }
 }

@@ -12,11 +12,12 @@ public class PagoCuotas extends Pago {
         if (importe<=0){
             throw new IllegalArgumentException("importe tiene que ser mayor a 0");
         } else {
-            if (importe>= getExpensas().getImporte()){
-                throw new IllegalArgumentException("pago mayor a importe, ponga pago directo");
+            if (importe>= getExpensas().getImportePendiente()){
+                getExpensas().setImportePendiente(0);
+                getExpensas().setEstadoExpensas(EstadoExpensas.PAGO);
             } else {
-                double importeResto=getExpensas().getImporte()-importe;
-                getExpensas().setImporte(importeResto);
+                double importeResto=getExpensas().getImportePendiente()-importe;
+                getExpensas().setImportePendiente(importeResto);
             }
 
         }

@@ -8,47 +8,57 @@ import Interfaces.Notificador;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class GestorReclamos {
     private Notificador notificador;
     private static int contadorReclamos=0;
     private List<Reclamos> reclamosLista=new ArrayList<>();
+    private List<HistorialReclamos> historialReclamos=new ArrayList<>();
 
-    public void registrarReclamos(Scanner scanner,Lote lote,Administrador administrador){
-        TipoReclamo tipoReclamo1=null;
-        String descripcionReclamo=null;
-        while(tipoReclamo1==null) {
-            try {
-                System.out.println("Ingresar tipo de reclamo SEGURIDAD,MANTENIMIENTO,CONVIVENCIA,ADMINISTRATIVO");
-                String tipo = scanner.nextLine().toUpperCase();
-                tipoReclamo1 = TipoReclamo.valueOf(tipo);
-            } catch (IllegalArgumentException e) {
-                System.out.println("ingreso no valido");
-            }
-        }
-        while(descripcionReclamo==null) {
-            try {
-                System.out.println("Ingresar descripcion del reclamo");
-                descripcionReclamo = scanner.nextLine().trim();
-                if (descripcionReclamo.isEmpty()){
-                    descripcionReclamo=null;
-                    throw new IllegalArgumentException("no puede estar vacia la descripcion");
-                }
-            } catch (IllegalArgumentException e) {
-                System.out.println("ingreso no valido");
-            }
-        }
+    public String registrarReclamos(TipoReclamo tipoReclamo1,String descripcionReclamo,Lote lote,Administrador administrador){
         Reclamos reclamoNuevo=new Reclamos(contadorReclamos,LocalDate.now(),tipoReclamo1,descripcionReclamo,Prioridad.valueOf(tipoReclamo1.getPrioridad()),EstadoReclamo.ABIERTO,lote.getTitular(),lote,administrador);
         this.reclamosLista.add(reclamoNuevo);
         contadorReclamos++;
+        PersistenciaTXTReclamos persistenciaJSONReclamos=new PersistenciaTXTReclamos();
+        persistenciaJSONReclamos.guardarReclamo(reclamoNuevo);
+        return "Registrado";
     }
 
-    public void asignarReclamos(){
-
+    public void asignarReclamos(Reclamos reclamos, Personal empleado){
+        boolean asignado= empleado.agregarReclamo(reclamos);
+        if (asignado){
+            reclamos.setEmpleado(empleado);
+            System.out.println("se asigno un empleado al reclamo correctamente");
+        } else {
+            System.out.println("no se asigno un empleado al reclamo");
+        }
+        cambiarEstadoReclamo(reclamos,EstadoReclamo.ASIGNADO,"se asigno a un empleado ppara revisarlo");
     }
 
-    public void cambiarEstadoReclamo(Reclamos reclamos){
-        reclamos.next
+    public void cambiarEstadoReclamo(Reclamos reclamos, EstadoReclamo estadoReclamoNuevo, String observacion){
+        EstadoReclamo actual=reclamos.getEstadoReclamo();
+        boolean cambio=false;
+        switch (actual){
+            case ABIERTO:
+                cambio=(estadoReclamoNuevo==EstadoReclamo.ASIGNADO);
+                break;
+            case ASIGNADO:
+                cambio=(estadoReclamoNuevo==EstadoReclamo.EN_CURSO);
+                break;
+            case EN_CURSO:
+                cambio=(estadoReclamoNuevo==EstadoReclamo.RESUELTO);
+                break;
+            case RESUELTO:
+                cambio=(estadoReclamoNuevo==EstadoReclamo.CERRADO);
+                break;
+        }
+        if (!cambio){
+            System.out.println("no se puede relizar la accion, no sigue la regla de solo pasar al siguiente estado");
+            return;
+        }
+        reclamos.cambiarEstado(estadoReclamoNuevo);
+        HistorialReclamos historialReclamos1=new HistorialReclamos(LocalDate.now(),estadoReclamoNuevo,observacion);
+        historialReclamos.add(historialReclamos1);
+        System.out.println("La operacion se relizo correctamente");
     }
 }

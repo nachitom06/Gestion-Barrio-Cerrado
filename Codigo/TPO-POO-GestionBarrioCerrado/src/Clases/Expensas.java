@@ -13,6 +13,7 @@ public class Expensas {
     private LocalDate fechaVencimiento;
     private EstadoExpensas estadoExpensas;
     private Lote lote;
+    private double importePendiente;
 
     public Expensas(Mes mes, double importe, Lote lote) {
         this.mes = mes;
@@ -20,6 +21,16 @@ public class Expensas {
         this.fechaVencimiento = LocalDate.now().plusMonths(1).withDayOfMonth(11);
         this.estadoExpensas = EstadoExpensas.PENDIENTE;
         this.lote = lote;
+        this.importePendiente=importe;
+
+    }
+
+    public EstadoExpensas getEstadoExpensas() {
+        return estadoExpensas;
+    }
+
+    public double getImportePendiente() {
+        return importe;
     }
 
     public double getImporte() {
@@ -30,9 +41,10 @@ public class Expensas {
         return importeTotal/150; //son 150 lotes
     }
 
-    public void setImporte(double importe) {
+    public void setImportePendiente(double importe) {
         this.importe = importe;
     }
+
 
     public void setEstadoExpensas(EstadoExpensas estadoExpensas) {
         this.estadoExpensas = estadoExpensas;

@@ -11,7 +11,7 @@ public class PagoDirecto extends Pago {
         setFechaPago(LocalDate.now());
         if (importe>= getExpensas().getImporte()){
             getExpensas().setEstadoExpensas(EstadoExpensas.PAGO);
-            getExpensas().setImporte(0);
+            getExpensas().setImportePendiente(0);
         } else {
             throw new IllegalArgumentException("No se ingreso el monto correcto");
         }

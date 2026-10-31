@@ -16,6 +16,7 @@ public class Reclamos {
     private Persona persona;
     private Lote lote;
     private Administrador administrador;
+    private Personal empleado;
 
     public EstadoReclamo getEstadoReclamo() {
         return estadoReclamo;
@@ -35,6 +36,47 @@ public class Reclamos {
         this.persona = persona;
         this.lote = lote;
         this.administrador = administrador;
+        this.empleado=null;
+    }
+
+    public void setEmpleado(Personal empleado) {
+        this.empleado = empleado;
+    }
+
+    public int getNumeroReclamo() {
+        return numeroReclamo;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public TipoReclamo getTipoReclamo() {
+        return tipoReclamo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Prioridad getPrioridad() {
+        return prioridad;
+    }
+
+    public Persona getPersona() {
+        return persona;
+    }
+
+    public Lote getLote() {
+        return lote;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public Personal getEmpleado() {
+        return empleado;
     }
 
     @Override
