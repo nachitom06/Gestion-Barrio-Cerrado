@@ -1,0 +1,1 @@
+numeroReclamo:0|fecha:2026-10-28|tipoReclamo:SEGURIDAD|descripcion:El muro sur parece que esta por derrumbarse, fijarse lo antes posible  que esta en un angulo considerable|prioridad:ALTA|estadoReclamo:ABIERTO
