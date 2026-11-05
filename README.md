@@ -18,16 +18,19 @@ IntelliJ IDEA
         - documento: String donde pones 8 numeros.  
         - numero de lote: int, representa el numero de lote de los 150 existentes.  
         - franja horaria: String, ejemplo: 0900 a 2100.  
-       Tocar boton de registrar autorizacion  
+       Tocar boton de registrar autorizacion
+     
    En caso de querer utilizar el control de acceso  
      Entrar al apartado VistasAcceso ejecute la clase e ingrese segun corresponda los siguientes datos  
         - documento: String, si es valido y coincide con algun documento dentro de las autorizaciones y esa autorizacion no esta utilizada, el ingreso es valido.  
-       Tocar boton de buscar autorizacion   
+       Tocar boton de buscar autorizacion
+     
    En caso de querer utilizar la creacion de reclamos  
      Entrar al apartado de vistasReclamos ejecute la clase e ingrese segun corresponda los siguientes datos  
         - tipo de reclamo: TipoReclamo SEGURIDAD, MANTENIMIENTO, CONVIVENCIA, ADMINISTRATIVO.  
         - descripcion: String describiendo la situacion.  
-       Tocar boton de registrar reclamo  
+       Tocar boton de registrar reclamo
+     
    En caso de querer utilizar el gestor de expensas para pagos  
      Entrar al apartado de vistasExpensas ejecute la clase e ingrese segun corresponda los siguientes datos  
         - numero de lote: int, representa el numero de lote de los 150 existentes.  
