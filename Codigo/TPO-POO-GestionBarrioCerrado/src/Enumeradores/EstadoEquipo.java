@@ -1,7 +1,8 @@
 package Enumeradores;
 
 public enum EstadoEquipo {
-    NUEVO,
+    OPERATIVO,
     FALLA,
+    REPARACION,
     ROTO
 }
