@@ -1,0 +1,1 @@
+mes:ENERO|importe:15000.0|importePendiente:15000.0|estado:PENDIENTE|numLote:1|fechaVencimiento:2026-05-11

@@ -1,0 +1,1 @@
+nombre:monzon|documento:47565228|lote:1|fecha:2026-11-04|franjaHoraria:0900 a 2100|utilizada:false
