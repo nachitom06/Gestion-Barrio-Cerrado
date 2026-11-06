@@ -2,12 +2,16 @@ package Vistas;
 
 import Clases.*;
 import Enumeradores.EstadoExpensas;
+import Enumeradores.Mes;
 import Enumeradores.MetodoPago;
+import Interfaces.PersistenciaLotes;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.List;
 
 public class VistasExpensa extends JFrame{
     private GestorExpensas gestorExpensas;
@@ -28,6 +32,25 @@ public class VistasExpensa extends JFrame{
     }
     public static void main(String[] args) {
         GestorExpensas gestorExpensas1=new GestorExpensas();
+        PersistenciaTXTLote persistenciaTXTLote=new PersistenciaTXTLote();
+        PersistenciaTXTExpensas persistenciaTXTExpensas=new PersistenciaTXTExpensas();
+
+        List<Lote> lotesGuardados=persistenciaTXTLote.cargarLotes();
+        for(Lote lote1:lotesGuardados){
+            gestorExpensas1.agregarLotes(lote1);
+        }
+        List<Expensas> expensasGuardadas=persistenciaTXTExpensas.cargarExpensas(gestorExpensas1);
+        if(lotesGuardados.isEmpty()){
+            Persona persona=new Persona("javier","melian","47563445","1139198867","javier.melian@gmail.com");
+            Lote loteParaPrueba=new Lote(persona,100,1);
+            LocalDate fechaParaPrueba=LocalDate.of(2026,1,12);
+            Expensas expensasParaPrueba=new Expensas(Mes.ENERO,15000.00,fechaParaPrueba,loteParaPrueba);
+            loteParaPrueba.getExpensasPendientes().offer(expensasParaPrueba);
+            gestorExpensas1.agregarLotes(loteParaPrueba);
+            persistenciaTXTLote.guardarLote(loteParaPrueba);
+            persistenciaTXTExpensas.guardarExpensa(expensasParaPrueba);
+        }
+
         SwingUtilities.invokeLater(() -> {
             VistasExpensa ventana = new VistasExpensa(gestorExpensas1);
             ventana.setVisible(true);
@@ -48,6 +71,7 @@ public class VistasExpensa extends JFrame{
                     String textoLote=txtLoteNum.getText().trim();
                     if(textoLote.isEmpty()){
                         JOptionPane.showMessageDialog(panelPrincipal,"no se ingreso nada");
+                        return;
                     }
                     int numLote=Integer.parseInt(textoLote);
                     lote=gestorExpensas.buscarLoteEnElSistema(numLote);
@@ -57,7 +81,7 @@ public class VistasExpensa extends JFrame{
                     }
                     expensas=gestorExpensas.obtenerDeudaMasAntigua(lote);
                     if(expensas==null){
-                        JOptionPane.showMessageDialog(panelPrincipal,"no se encontro el lote");
+                        JOptionPane.showMessageDialog(panelPrincipal,"no se encontro expensas");
                         return;
                     }
                     double montoInteres=gestorExpensas.calcularMontoTotalAPagar(expensas);
@@ -75,7 +99,8 @@ public class VistasExpensa extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     String importeExpesnsas=txtImporte.getText().trim();
-                    MetodoPago metodoPago=(MetodoPago) cmbMetodoPago.getSelectedItem();
+                    String textoParaMetodoPago=cmbMetodoPago.getSelectedItem().toString();
+                    MetodoPago metodoPago=MetodoPago.valueOf(textoParaMetodoPago);
                     if(importeExpesnsas.isEmpty()){
                         JOptionPane.showMessageDialog(panelPrincipal,"no se ingreso nada");
                     }
@@ -108,7 +133,8 @@ public class VistasExpensa extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     String importeExpesnsasCuota=txtImporte.getText().trim();
-                    MetodoPago metodoPagoCuota=(MetodoPago) cmbMetodoPago.getSelectedItem();
+                    String textoParaMetodoPagoCuota=cmbMetodoPago.getSelectedItem().toString();
+                    MetodoPago metodoPagoCuota =MetodoPago.valueOf(textoParaMetodoPagoCuota);
                     if(importeExpesnsasCuota.isEmpty()){
                         JOptionPane.showMessageDialog(panelPrincipal,"no se ingreso nada");
                     }

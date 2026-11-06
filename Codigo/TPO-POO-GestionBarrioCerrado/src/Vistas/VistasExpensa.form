@@ -17,7 +17,7 @@
         <children>
           <component id="747ba" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Sistema de Gestion de Barrio Cerrado &quot;Hogar Segura&quot;"/>
@@ -25,7 +25,7 @@
           </component>
           <component id="96be9" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Gestor Expensas"/>
@@ -115,7 +115,12 @@
               <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <model/>
+              <model>
+                <item value="EFECTIVO"/>
+                <item value="DEBITO"/>
+                <item value="CREDITO"/>
+                <item value="BILLETERAVIRTUAL"/>
+              </model>
             </properties>
           </component>
           <component id="34484" class="javax.swing.JLabel">

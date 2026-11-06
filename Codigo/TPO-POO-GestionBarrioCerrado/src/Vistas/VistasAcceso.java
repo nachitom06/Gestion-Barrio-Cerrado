@@ -1,13 +1,12 @@
 package Vistas;
 
-import Clases.Administrador;
-import Clases.GestorAcceso;
-import Clases.Lote;
+import Clases.*;
 import Enumeradores.TipoReclamo;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class VistasAcceso extends JFrame{
     private GestorAcceso gestorAcceso;
@@ -53,7 +52,11 @@ public class VistasAcceso extends JFrame{
 
     public static void main(String[] args) {
         GestorAcceso gestorAcceso1=new GestorAcceso();
-
+        GestorExpensas gestorExpensas=new GestorExpensas();
+        GestorAutorizaciones gestorAutorizaciones=new GestorAutorizaciones(gestorExpensas);
+        PersistenciaTXTAutorizaciones persistenciaTXTAutorizaciones=new PersistenciaTXTAutorizaciones();
+        List<Autorizaciones> autorizacionesGuardados=persistenciaTXTAutorizaciones.cargarAutorizaciones(gestorAutorizaciones,gestorExpensas);
+        gestorAcceso1.setAutorizaciones(autorizacionesGuardados);
         SwingUtilities.invokeLater(() -> {
             VistasAcceso ventana = new VistasAcceso(gestorAcceso1);
             ventana.setVisible(true);

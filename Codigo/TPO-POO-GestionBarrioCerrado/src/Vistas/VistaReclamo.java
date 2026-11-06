@@ -66,7 +66,7 @@ public class VistaReclamo extends JFrame{
         setLocationRelativeTo(null);
     }
     public static void main(String[] args) {
-        Lote lote1=new Lote(new Persona(),100,1);
+        Lote lote1=new Lote(new Persona("javier","melian","47563445","1139198867","javier.melian@gmail.com"),100,1);
         Administrador administrador1=new Administrador();
         GestorReclamos gestorReclamos=new GestorReclamos();
         SwingUtilities.invokeLater(() -> {
