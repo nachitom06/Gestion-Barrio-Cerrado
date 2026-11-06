@@ -8,6 +8,10 @@ public class GestorAcceso {
     private List<Autorizaciones> autorizaciones=new ArrayList<>();
     private List<RegistroVisitas> registroVisitas=new ArrayList<>();
 
+    public void setAutorizaciones(List<Autorizaciones> autorizaciones) {
+        this.autorizaciones = autorizaciones;
+    }
+
     public boolean buscarAutorizacionEnElSistema(String documento){
         Autorizaciones autorizacion=null;
         for (Autorizaciones autorizaciones1: autorizaciones) {

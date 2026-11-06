@@ -25,6 +25,26 @@ public class Expensas {
 
     }
 
+    public Expensas(Mes mes, double importe, LocalDate fechaVencimiento, Lote lote) {
+        this.mes = mes;
+        this.importe = importe;
+        this.fechaVencimiento = fechaVencimiento;
+        this.lote = lote;
+        this.importePendiente = importe;
+    }
+
+    public Mes getMes() {
+        return mes;
+    }
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public Lote getLote() {
+        return lote;
+    }
+
     public EstadoExpensas getEstadoExpensas() {
         return estadoExpensas;
     }

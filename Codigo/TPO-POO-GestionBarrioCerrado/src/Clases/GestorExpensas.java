@@ -36,4 +36,8 @@ public class GestorExpensas {
         }
         return null;
     }
+
+    public void agregarLotes(Lote lote) {
+        this.lotes.add(lote);
+    }
 }
