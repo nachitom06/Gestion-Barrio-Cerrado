@@ -40,6 +40,7 @@ public class VistasExpensa extends JFrame{
             gestorExpensas1.agregarLotes(lote1);
         }
         List<Expensas> expensasGuardadas=persistenciaTXTExpensas.cargarExpensas(gestorExpensas1);
+        gestorExpensas1.setExpensasSistema(expensasGuardadas);
         if(lotesGuardados.isEmpty()){
             Persona persona=new Persona("javier","melian","47563445","1139198867","javier.melian@gmail.com");
             Lote loteParaPrueba=new Lote(persona,100,1);
@@ -113,6 +114,8 @@ public class VistasExpensa extends JFrame{
                             gestorExpensas.registrarPago(lote,importeNumero);
                         }
                         boolean moroso=gestorExpensas.verificarMorosidad(lote);
+                        PersistenciaTXTExpensas persistenciaTXTExpensas=new PersistenciaTXTExpensas();
+                        persistenciaTXTExpensas.guardarTodasLasExpensas(gestorExpensas.getExpensasSistema());
                         JOptionPane.showMessageDialog(panelPrincipal,"pago registrado");
                         CardLayout cardLayout=(CardLayout) panelPrincipal.getLayout();
                         cardLayout.show(panelPrincipal,"BuscarDeuda");
@@ -147,6 +150,8 @@ public class VistasExpensa extends JFrame{
                             gestorExpensas.registrarPago(lote,importeNumeroCuota);
                         }
                         boolean morosoCuota=gestorExpensas.verificarMorosidad(lote);
+                        PersistenciaTXTExpensas persistenciaTXTExpensas=new PersistenciaTXTExpensas();
+                        persistenciaTXTExpensas.guardarTodasLasExpensas(gestorExpensas.getExpensasSistema());
                         JOptionPane.showMessageDialog(panelPrincipal,"pago registrado");
                         CardLayout cardLayout=(CardLayout) panelPrincipal.getLayout();
                         cardLayout.show(panelPrincipal,"BuscarDeuda");
