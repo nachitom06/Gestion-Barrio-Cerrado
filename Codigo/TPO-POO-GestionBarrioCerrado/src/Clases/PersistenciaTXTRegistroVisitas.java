@@ -78,7 +78,7 @@ public class PersistenciaTXTRegistroVisitas implements PersistenciaRegistroVisit
     public void guardarTodosLosRegistros(List<RegistroVisitas> listaRegistros) {
         try (FileWriter fw = new FileWriter("C:/Users/ignac/IdeaProjects/TPO-POO-GestionBarrioCerrado/src/Persistencia/RegistroVisitas.txt");
              BufferedWriter bw = new BufferedWriter(fw)) {
-            for (RegistroVisitas registroVisitas : listaRegistros) {
+            for (RegistroVisitas registroVisitas: listaRegistros) {
                 String registroGuardar="documentoVisita:"+registroVisitas.getAutorizaciones().getDocumento()+"|fechaIngreso:"+registroVisitas.getFechaIngreso()+"|fechaEgreso:"+ registroVisitas.getFechaEgreso();
                 bw.write(registroGuardar);
                 bw.newLine();
