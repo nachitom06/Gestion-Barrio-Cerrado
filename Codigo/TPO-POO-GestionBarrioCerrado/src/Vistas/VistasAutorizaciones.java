@@ -1,6 +1,8 @@
 package Vistas;
 
 import Clases.*;
+import Controladores.GestorAutorizaciones;
+import Controladores.GestorExpensas;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

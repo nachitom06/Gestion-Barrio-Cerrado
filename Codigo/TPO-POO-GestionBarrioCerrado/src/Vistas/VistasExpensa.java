@@ -1,10 +1,10 @@
 package Vistas;
 
 import Clases.*;
+import Controladores.GestorExpensas;
 import Enumeradores.EstadoExpensas;
 import Enumeradores.Mes;
 import Enumeradores.MetodoPago;
-import Interfaces.PersistenciaLotes;
 
 import javax.swing.*;
 import java.awt.*;

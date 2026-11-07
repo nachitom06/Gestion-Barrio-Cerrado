@@ -1,6 +1,7 @@
 package Vistas;
 
 import Clases.*;
+import Controladores.GestorReclamos;
 import Enumeradores.TipoReclamo;
 import Interfaces.Notificador;
 
@@ -23,7 +24,7 @@ public class VistaReclamo extends JFrame{
     private JTextField txtDescripcion;
     private JButton btnRegistrarReclamo;
 
-    public void registrarReclamos(Lote lote, Administrador administrador, Clases.GestorReclamos gestor){
+    public void registrarReclamos(Lote lote, Administrador administrador, GestorReclamos gestor){
         TipoReclamo tipoReclamo1=null;
         String descripcionReclamo=null;
         try {
