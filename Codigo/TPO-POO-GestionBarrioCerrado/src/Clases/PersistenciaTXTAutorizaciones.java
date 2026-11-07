@@ -1,9 +1,8 @@
 package Clases;
 
-import Enumeradores.EstadoExpensas;
-import Enumeradores.Mes;
+import Controladores.GestorAutorizaciones;
+import Controladores.GestorExpensas;
 import Interfaces.PersistenciaAutorizaciones;
-import Interfaces.PersistenciaReclamos;
 
 import java.io.*;
 import java.time.LocalDate;

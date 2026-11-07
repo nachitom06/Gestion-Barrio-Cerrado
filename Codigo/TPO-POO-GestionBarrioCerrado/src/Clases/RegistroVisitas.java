@@ -3,6 +3,7 @@ package Clases;
 import java.time.LocalDate;
 
 public class RegistroVisitas {
+    private String documento;
     private Autorizaciones autorizaciones;
     private LocalDate fechaIngreso  ;
     private LocalDate fechaEgreso;
@@ -10,6 +11,18 @@ public class RegistroVisitas {
     public RegistroVisitas(Autorizaciones autorizaciones, LocalDate fechaIngreso) {
         this.autorizaciones = autorizaciones;
         this.fechaIngreso = fechaIngreso;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
+
+    public LocalDate getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public LocalDate getFechaEgreso() {
+        return fechaEgreso;
     }
 
     public void setFechaEgreso(LocalDate fechaEgreso) {

@@ -1,9 +1,9 @@
 package Clases;
 
+import Controladores.GestorExpensas;
 import Enumeradores.EstadoExpensas;
 import Enumeradores.Mes;
 import Interfaces.PersistenciaExpensas;
-import Interfaces.PersistenciaLotes;
 
 import java.io.*;
 import java.time.LocalDate;
