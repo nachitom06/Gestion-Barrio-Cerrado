@@ -76,4 +76,16 @@ public class PersistenciaTXTExpensas implements PersistenciaExpensas {
             }
             return listaExpensas;
         }
+    public void guardarTodasLasExpensas(List<Expensas> listaExpensas) {
+        try (FileWriter fw = new FileWriter("C:/Users/ignac/IdeaProjects/TPO-POO-GestionBarrioCerrado/src/Persistencia/Expensas.txt");
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            for (Expensas expensas: listaExpensas) {
+                String reclamoGuardar = "mes:"+expensas.getMes()+"|importe:"+expensas.getImporte()+"|importePendiente:"+expensas.getImportePendiente()+"|estado:"+expensas.getEstadoExpensas()+"|numLote:"+expensas.getLote().getNumLote()+"|fechaVencimiento:"+expensas.getFechaVencimiento();
+                bw.write(reclamoGuardar);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
     }
