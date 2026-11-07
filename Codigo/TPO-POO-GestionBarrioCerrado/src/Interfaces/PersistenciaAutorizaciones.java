@@ -1,9 +1,8 @@
 package Interfaces;
 
 import Clases.Autorizaciones;
-import Clases.Expensas;
-import Clases.GestorAutorizaciones;
-import Clases.GestorExpensas;
+import Controladores.GestorAutorizaciones;
+import Controladores.GestorExpensas;
 
 import java.util.List;
 

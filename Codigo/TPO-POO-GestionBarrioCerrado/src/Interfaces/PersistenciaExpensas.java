@@ -1,8 +1,7 @@
 package Interfaces;
 
 import Clases.Expensas;
-import Clases.GestorExpensas;
-import Clases.Lote;
+import Controladores.GestorExpensas;
 
 import java.util.List;
 
